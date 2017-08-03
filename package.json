@@ -1,6 +1,6 @@
 {
   "name": "reflective-lang-ast",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Abstract Syntax Tree (AST) node types for languages on the Reflective Platform",
   "main": "index.js",
   "scripts": {
