@@ -1,7 +1,7 @@
 {
-  "name": "reflective-ast",
+  "name": "reflective-lang-ast",
   "version": "0.0.1",
-  "description": "Abstract Syntax Tree (AST) node types for Reflective languages",
+  "description": "Abstract Syntax Tree (AST) node types for languages on the Reflective Platform",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive"
@@ -13,11 +13,15 @@
     "language",
     "parsing"
   ],
-  "author": "Rasmus Borgsmidt <ras@reflective.dk>",
+  "author": "Reflective Systems <code@reflective.dk>",
   "license": "UNLICENSED",
   "private": true,
-  "repository" : {
-    "type" : "git",
-    "url" : "git@bitbucket.org:iteration2/reflective-ast.git"
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:iteration2/reflective-lang-ast.git"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.5.0"
   }
 }
