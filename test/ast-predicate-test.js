@@ -86,8 +86,8 @@ describe('Predicate node types', function() {
         });
     });
 
-    var path = new ast.PathNode([ 'left' ]);
-    var string = new ast.StringNode('name');
+    var path = new ast.PathNode([ 'name' ]);
+    var string = new ast.StringNode('some string');
     var boolean = new pred.BooleanNode(true);
     var number = new numeric.NumberNode(42);
     var arith = new numeric.AdditionNode(number, number);
@@ -148,6 +148,14 @@ describe('Predicate node types', function() {
                 right: arith.serialize()
             });
         });
+        it('should accept path nodes', function() {
+            console.log('in test', path);
+            new pred.LtNode(path, path).serialize().should.deep.equal({
+                nodeType: 'lt',
+                left: path.serialize(),
+                right: path.serialize()
+            });
+        });
         it('should reject other types of node', function() {
             (function() {
                 new pred.LtNode();
@@ -186,6 +194,13 @@ describe('Predicate node types', function() {
                 nodeType: 'lte',
                 left: arith.serialize(),
                 right: arith.serialize()
+            });
+        });
+        it('should accept path nodes', function() {
+            new pred.LteNode(path, path).serialize().should.deep.equal({
+                nodeType: 'lte',
+                left: path.serialize(),
+                right: path.serialize()
             });
         });
         it('should reject other types of node', function() {
@@ -228,6 +243,13 @@ describe('Predicate node types', function() {
                 right: arith.serialize()
             });
         });
+        it('should accept path nodes', function() {
+            new pred.GteNode(path, path).serialize().should.deep.equal({
+                nodeType: 'gte',
+                left: path.serialize(),
+                right: path.serialize()
+            });
+        });
         it('should reject other types of node', function() {
             (function() {
                 new pred.GteNode();
@@ -266,6 +288,13 @@ describe('Predicate node types', function() {
                 nodeType: 'gt',
                 left: arith.serialize(),
                 right: arith.serialize()
+            });
+        });
+        it('should accept path nodes', function() {
+            new pred.GtNode(path, path).serialize().should.deep.equal({
+                nodeType: 'gt',
+                left: path.serialize(),
+                right: path.serialize()
             });
         });
         it('should reject other types of node', function() {
