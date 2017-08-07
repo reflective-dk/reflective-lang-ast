@@ -41,6 +41,33 @@ describe('Predicate node types', function() {
         });
     });
 
+    describe('PathUniqueNode', function() {
+        it('should accept a valid path as input', function() {
+            var path = new ast.PathNode([ 'a', 'valid', 'path' ]);
+            new pred.PathUniqueNode(path).serialize().should.deep.equal({
+                nodeType: 'pathUnique',
+                child: path.serialize()
+            });
+        });
+        it('should reject invalid input', function() {
+            (function() {
+                new pred.PathUniqueNode();
+            }).should.throw(/invalid arg/);
+            (function() {
+                new pred.PathUniqueNode([]);
+            }).should.throw(/invalid arg/);
+            (function() {
+                new pred.PathUniqueNode('somePath');
+            }).should.throw(/invalid arg/);
+            (function() {
+                new pred.PathUniqueNode([ 'a', 'valid', 'path' ]);
+            }).should.throw(/invalid arg/);
+            (function() {
+                new pred.PathUniqueNode(42);
+            }).should.throw(/invalid arg/);
+        });
+    });
+
     describe('BooleanNode', function() {
         it('should accept any type of input and convert it to true or false', function() {
             new pred.BooleanNode(true).serialize().should.deep.equal({
