@@ -33,5 +33,10 @@ describe('AST serialization/hydration', function() {
             var hydrated = ast.AstNode.hydrate(serialized);
             hydrated.serialize().should.deep.equal(serialized);
         });
+
+        it('should reject an invalid serialization', function() {
+            var hydrated = ast.AstNode.hydrate({ id: 'foo', type: 'bar' });
+            (!hydrated).should.equal(true);
+        });
     });
 });
