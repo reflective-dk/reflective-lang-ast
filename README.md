@@ -8,7 +8,7 @@ languages of the Reflective Platform.
 ### In action ###
 
 ```
-git clone git@bitbucket.org:iteration2/reflective-lang-ast.git
+git clone git@github.com:reflective-dk/reflective-lang-ast.git
 cd reflective-lang-ast
 npm install
 npm test
